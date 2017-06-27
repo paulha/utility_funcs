@@ -3,7 +3,7 @@ from setuptools import setup
 install_requires = {
       'os',
       'unittest',
-      'yaml',
+      # 'yaml',
       'mock'
 }
 
