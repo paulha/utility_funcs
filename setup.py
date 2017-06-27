@@ -3,7 +3,8 @@ from setuptools import setup
 install_requires = {
       'os',
       'unittest',
-      'yaml'
+      'yaml',
+      'mock'
 }
 
 setup(name='utility_funcs',
@@ -14,4 +15,4 @@ setup(name='utility_funcs',
       author_email='paul.hanchett@gmail.com',
       license='MIT',
       packages=['utility_funcs'],
-      zip_safe=False)
+      zip_safe=False, install_requires=['yaml'])
