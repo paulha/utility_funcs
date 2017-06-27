@@ -15,4 +15,4 @@ setup(name='utility_funcs',
       author_email='paul.hanchett@gmail.com',
       license='MIT',
       packages=['utility_funcs'],
-      zip_safe=False, install_requires=['yaml'])
+      zip_safe=False)
