@@ -57,7 +57,8 @@ def get_server_info( server_name, path_list="./config.yaml"+pathsep+"~/.jira/con
         else:
             raise KeyError("Missing 'servers' section")
 
+        section['config_directory'] = os.path.dirname(file_path)
         return section
 
-#if __name__ == '__main__':
+
 
