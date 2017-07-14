@@ -1,5 +1,5 @@
 #!/bin/env python
-from os.path import exists, join, abspath, expanduser
+from os.path import exists, join, abspath, expanduser, dirname
 from os import pathsep
 import yaml
 
@@ -57,7 +57,7 @@ def get_server_info( server_name, path_list="./config.yaml"+pathsep+"~/.jira/con
         else:
             raise KeyError("Missing 'servers' section")
 
-        section['config_directory'] = os.path.dirname(file_path)
+        section['config_directory'] = dirname(file_path)
         return section
 
 
