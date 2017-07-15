@@ -29,12 +29,9 @@ def setup_logging(
     value = os.getenv(env_key, None)
     if value:
         path = value
-    if os.path.exists(path):
-        with open(path, 'rt') as f:
-            config = yaml.safe_load(f.read())
-        logging.config.dictConfig(config)
-    else:
-        logging.basicConfig(level=default_level)
+    with open(path, 'rt') as f:
+        config = yaml.safe_load(f.read())
+    logging.config.dictConfig(config)
 
 # -- Don't need to do configuration more than once...
 # try:
