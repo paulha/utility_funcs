@@ -42,7 +42,7 @@ def setup_logging(
 # except:
 #     setup_logging()
 #     log_page = logging.getLogger("log_page")
-#     logger =logging.getLogger("root")
+logger =logging.getLogger("root")
 #     root =logging.getLogger("root")
 #     console = logging.getLogger("console")
 
