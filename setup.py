@@ -4,6 +4,7 @@ install_requires = {
       'os',
       'unittest',
       # 'yaml',
+      'logging',
       'mock'
 }
 
