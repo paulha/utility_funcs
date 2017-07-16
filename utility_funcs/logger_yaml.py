@@ -17,6 +17,8 @@ is the definition of the stream from the YAML file. If it happens that <name> is
 defined in the file, it seems to default to the root stream.
 """
 
+logger =logging.getLogger("root")
+
 def setup_logging(
     default_path='logging.yaml',
     default_level=logging.INFO,
@@ -25,6 +27,7 @@ def setup_logging(
     """Setup logging configuration
 
     """
+    global logger
     path = default_path
     value = os.getenv(env_key, None)
     if value:
@@ -32,6 +35,7 @@ def setup_logging(
     with open(path, 'rt') as f:
         config = yaml.safe_load(f.read())
     logging.config.dictConfig(config)
+    logger =logging.getLogger("root")
 
 # -- Don't need to do configuration more than once...
 # try:
@@ -39,7 +43,7 @@ def setup_logging(
 # except:
 #     setup_logging()
 #     log_page = logging.getLogger("log_page")
-logger =logging.getLogger("root")
+#     logger =logging.getLogger("root")
 #     root =logging.getLogger("root")
 #     console = logging.getLogger("console")
 
