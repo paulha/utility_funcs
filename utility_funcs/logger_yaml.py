@@ -32,9 +32,13 @@ def setup_logging(
     value = os.getenv(env_key, None)
     if value:
         path = value
-    with open(path, 'rt') as f:
-        config = yaml.safe_load(f.read())
-    logging.config.dictConfig(config)
+    if os.path.exists(path):
+        with open(path, 'rt') as f:
+            config = yaml.safe_load(f.read())
+        logging.config.dictConfig(config)
+    else:
+        logging.basicConfig(level=default_level)
+        logging.Logger.warning("Unable to open logging configuration file %s", path)
     logger =logging.getLogger("root")
 
 # -- Don't need to do configuration more than once...
