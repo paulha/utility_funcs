@@ -54,8 +54,8 @@ def setup_logging(
         logger.info("Unable to open logging configuration file %s, using basic logging"%(path))
 
 # -- Don't need to do configuration more than once...
-if logger is None:
-    setup_logging()
+#if logger is None:
+    #setup_logging()
 
 """
 root.fatal("FATAL to root -- This should go to everyone...")
