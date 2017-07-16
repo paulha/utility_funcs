@@ -2,6 +2,7 @@ import os
 import logging as logging
 import logging.config
 import yaml
+import utility_funcs.search as search
 
 """
 Get configuration from yaml file.  Sets up logging streams as defined in logger.yaml.
@@ -40,6 +41,7 @@ def setup_logging(
     value = os.getenv(env_key, None)
     if value:
         path = value
+    path = search.search_for_profile(path)
     if os.path.exists(path):
         with open(path, 'rt') as f:
             config = yaml.safe_load(f.read())
@@ -47,7 +49,7 @@ def setup_logging(
         print("Using logging configuration file %s"%(path))
     else:
         logging.basicConfig(level=default_level)
-        print("Unable to open logging configuration file %s"%(path))
+        print("Unable to open logging configuration file %s, using basic logging"%(path))
     get_loggers()
 
 # -- Don't need to do configuration more than once...
