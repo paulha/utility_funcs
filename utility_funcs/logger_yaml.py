@@ -53,7 +53,7 @@ def setup_logging(
     get_loggers()
 
 # -- Don't need to do configuration more than once...
-if logger is None
+if logger is None:
     setup_logging()
 
 """
