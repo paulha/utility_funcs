@@ -39,12 +39,14 @@ def setup_logging(
         print("Unable to open logging configuration file %s"%path)
 
 # -- Don't need to do configuration more than once...
-if type(logger) == 'None':
+try:
+    logger
+except NameError:
     setup_logging()
+    logger =logging.getLogger("root")
+    root =logging.getLogger("root")
+    console = logging.getLogger("console")
 
-logger =logging.getLogger("root")
-root =logging.getLogger("root")
-console = logging.getLogger("console")
 
 """
 root.fatal("FATAL to root -- This should go to everyone...")
