@@ -39,7 +39,7 @@ def setup_logging(
         print("Unable to open logging configuration file %s"%path)
 
 # -- Don't need to do configuration more than once...
-if logger is None:
+if type(logger) == 'None':
     setup_logging()
 
 logger =logging.getLogger("root")
