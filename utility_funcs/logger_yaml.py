@@ -46,11 +46,12 @@ def setup_logging(
         with open(path, 'rt') as f:
             config = yaml.safe_load(f.read())
         logging.config.dictConfig(config)
-        print("Using logging configuration file %s"%(path))
+        get_loggers()
+        logger.info("Using logging configuration file %s"%(path))
     else:
         logging.basicConfig(level=default_level)
-        print("Unable to open logging configuration file %s, using basic logging"%(path))
-    get_loggers()
+        get_loggers()
+        logger.info("Unable to open logging configuration file %s, using basic logging"%(path))
 
 # -- Don't need to do configuration more than once...
 if logger is None:
