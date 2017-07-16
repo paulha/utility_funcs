@@ -38,8 +38,8 @@ def setup_logging(
         logging.config.dictConfig(config)
     else:
         logging.basicConfig(level=default_level)
-        logging.Logger.warning("Unable to open logging configuration file %s", path)
-    logger =logging.getLogger("root")
+        print("Unable to open logging configuration file %s"%path)
+    logger = logging.getLogger("root")
 
 # -- Don't need to do configuration more than once...
 # try:
