@@ -33,10 +33,10 @@ def setup_logging(
         with open(path, 'rt') as f:
             config = yaml.safe_load(f.read())
         logging.config.dictConfig(config)
-        print("Using configuration file %s"%(os.path(path)))
+        print("Using configuration file %s"%(path))
     else:
         logging.basicConfig(level=default_level)
-        print("Unable to open logging configuration file %s"%os.path(path))
+        print("Unable to open logging configuration file %s"%(path))
 
 # -- Don't need to do configuration more than once...
 try:
