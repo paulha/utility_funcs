@@ -39,14 +39,12 @@ def setup_logging(
         print("Unable to open logging configuration file %s"%path)
 
 # -- Don't need to do configuration more than once...
-try:
-    logger
+if logger is None:
     setup_logging()
-    log_page = logging.getLogger("log_page")
-except:
-    logger =logging.getLogger("root")
-    root =logging.getLogger("root")
-    console = logging.getLogger("console")
+
+logger =logging.getLogger("root")
+root =logging.getLogger("root")
+console = logging.getLogger("console")
 
 """
 root.fatal("FATAL to root -- This should go to everyone...")
