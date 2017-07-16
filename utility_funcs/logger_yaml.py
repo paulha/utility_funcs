@@ -17,6 +17,17 @@ is the definition of the stream from the YAML file. If it happens that <name> is
 defined in the file, it seems to default to the root stream.
 """
 
+logger = None
+root = None
+console = None
+
+
+def get_loggers()
+    global logger, root, console
+    logger =logging.getLogger("root")
+    root =logging.getLogger("root")
+    console = logging.getLogger("console")
+
 def setup_logging(
     default_path='logging.yaml',
     default_level=logging.INFO,
@@ -37,16 +48,11 @@ def setup_logging(
     else:
         logging.basicConfig(level=default_level)
         print("Unable to open logging configuration file %s"%(path))
+    get_loggers()
 
 # -- Don't need to do configuration more than once...
-try:
-    logger
-except NameError:
+if logger is None
     setup_logging()
-    logger =logging.getLogger("root")
-    root =logging.getLogger("root")
-    console = logging.getLogger("console")
-
 
 """
 root.fatal("FATAL to root -- This should go to everyone...")
