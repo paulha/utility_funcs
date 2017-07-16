@@ -23,7 +23,7 @@ root = None
 console = None
 
 
-def get_loggers()
+def get_loggers():
     global logger, root, console
     logger =logging.getLogger("root")
     root =logging.getLogger("root")
