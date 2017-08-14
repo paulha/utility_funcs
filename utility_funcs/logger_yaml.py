@@ -1,4 +1,5 @@
 import os
+import collections
 import logging as logging
 import logging.config
 import yaml
@@ -22,6 +23,16 @@ logger = None
 root = None
 console = None
 
+def update_dict(d, u):
+    for k, v in u.items():
+        if isinstance(v, collections.Mapping):
+            default = v.copy()
+            default.clear()
+            r = update_dict(d.get(k, default), v)
+            d[k] = r
+        else:
+            d[k] = v
+    return d
 
 def get_loggers():
     global logger, root, console
@@ -32,7 +43,8 @@ def get_loggers():
 def setup_logging(
     default_path='logging.yaml',
     default_level=logging.INFO,
-    env_key='LOG_CFG'
+    env_key='LOG_CFG',
+    override=None
 ):
     """Setup logging configuration
 
@@ -45,6 +57,8 @@ def setup_logging(
     if os.path.exists(path):
         with open(path, 'rt') as f:
             config = yaml.safe_load(f.read())
+        if override is not None:
+            config = update_dict(config, override)
         logging.config.dictConfig(config)
         get_loggers()
         logger.info("Using logging configuration file %s"%(path))

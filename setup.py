@@ -5,7 +5,8 @@ install_requires = {
       'unittest',
       # 'yaml',
       'logging',
-      'mock'
+      'mock',
+      'collections'
 }
 
 setup(name='utility_funcs',
