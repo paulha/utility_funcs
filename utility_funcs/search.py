@@ -53,7 +53,7 @@ def get_server_info( server_name, path_list="./config.yaml"+pathsep+"~/.jira/con
             if server_name in config['servers']:
                 section = config['servers'][server_name]
             else:
-                raise KeyError("Name '%s' not found in servers" % server_name )
+                raise KeyError("Server name '%s' not found in path '%s'" % (server_name, path_list))
         else:
             raise KeyError("Missing 'servers' section")
 
