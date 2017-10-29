@@ -54,7 +54,8 @@ class TestGetServerInfo(TestCase):
         mock_search.return_value = "dummy"
         section = get_server_info("jira-t2")
         self.assertDictEqual(section,
-                             {'host': 'This is a funky name',
+                             {'config_directory': '',
+                              'host': 'This is a funky name',
                               'password': 'xxxxxxxxxx',
                               'username': 'pfhanchx',
                               'verify': 'IntelSHA256RootCA-Base64.crt'},
